@@ -1,7 +1,7 @@
 # PIBIC_DMR_IR
 # Inteligência Artificial Explicável na Classificação de Câncer de Mama em Imagens Termográficas
 
-Projeto de Iniciação Científica (PIVIC/UFU) dedicado à investigação de modelos de inteligência artificial para classificação de imagens termográficas de mama e à avaliação de suas explicações visuais.
+Projeto de Iniciação Científica (PIBIC/UFU) dedicado à investigação de modelos de inteligência artificial para classificação de imagens termográficas de mama e à avaliação de suas explicações visuais.
 
 ## Objetivo
 
