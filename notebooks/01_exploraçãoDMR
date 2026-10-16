@@ -1,26 +1,28 @@
-from pathlib import Path
+from pathlib import Path 
 from collections import Counter
 
-# Verifique de onde o notebook está sendo executado
-print("Diretório atual:", Path.cwd())
-
-# Comece pela pasta
-DATA_DIR = Path(r"C:\Códigos\IC\PIVIC_DMR_IR\data")
+#Verifica se a pasta existe
+DATA_DIR = Path(
+    r"C:\Códigos\IC\PIBIC_DMR_IR\data\raw\DMR-IR")
 
 print("Pasta encontrada:", DATA_DIR.exists())
 
-# Listar os arquivos da base
+# Lista todos os arquivos na pasta DMR-IR
 files = [p for p in DATA_DIR.rglob("*") if p.is_file()]
 
 print("Total de arquivos:", len(files))
 
-# Contar as extensões
 extensions = Counter(p.suffix.lower() for p in files)
 
-print("\nExtensões encontradas:")
+
 for ext, quantity in extensions.items():
     print(f"{ext or '[sem extensão]'}: {quantity}")
 
+#Seleciona uma imagem aleatória e exibe suas informações
+
+import random
+from PIL import Image
+import matplotlib.pyplot as plt
 
 image_extensions = {".png", ".jpg", ".jpeg", ".bmp", ".tif", ".tiff"}
 
@@ -31,30 +33,67 @@ images = [
 
 print("Total de imagens:", len(images))
 
-for image_path in images[:7]:
-    print(image_path)
+if images:
+    image_path = random.choice(images)
+    image = Image.open(image_path)
 
-from PIL import Image
+    print("Arquivo:", image_path)
+    print("Tamanho:", image.size)
+    print("Modo:", image.mode)
+
+    plt.imshow(image)
+    plt.axis("off")
+    plt.show()
+else:
+    print("Nenhuma imagem com essas extensões foi encontrada.")
+
+#Carregando as matrizes de dados
+matrizes_dirs = [
+    p for p in DATA_DIR.rglob("*")
+    if p.is_dir() and p.name.lower() == "matrizes"
+]
+
+arquivos_matriz = [
+    p for p in DATA_DIR.rglob("*")
+    if p.is_file()
+]
+
+print("Quantidade de arquivos:", len(arquivos_matriz))
+extensoesM = Counter(p.suffix.lower() for p in arquivos_matriz)
+print(extensoesM)
+
+import numpy as np
+
+arquivo = arquivos_matriz[0]
+
+matriz = np.loadtxt(arquivo)
+
+print("Arquivo:", arquivo)
+print("Shape:", matriz.shape)
+print("Tipo de dado:", matriz.dtype)
+print("Valor mínimo:", np.min(matriz))
+print("Valor máximo:", np.max(matriz))
+arquivos_txt = [
+    p for p in arquivos_matriz
+    if p.suffix.lower() == ".txt"
+]
+
+print("Total de arquivos TXT:", len(arquivos_txt))
+
+arquivo = arquivos_txt[0]
+print("Arquivo selecionado:", arquivo)
+
+with open(arquivo, "r", encoding="utf-8") as f:
+    for i in range(3):
+        print(f.readline().strip()[:200])
+
 import matplotlib.pyplot as plt
 
-image_path = images[8]
+plt.figure(figsize=(9, 6))
 
-image = Image.open(image_path)
-
-print("Arquivo:", image_path)
-print("Tamanho:", image.size)
-print("Modo:", image.mode)
-
-import random
-
-image_path = random.choice(images)
-
-image = Image.open(image_path)
-
-print("Arquivo:", image_path)
-print("Tamanho:", image.size)
-print("Modo:", image.mode)
-
-plt.imshow(image)
+plt.imshow(matriz, cmap="inferno")
+plt.colorbar(label="Valor armazenado")
+plt.title("Matriz térmica DMR-IR")
 plt.axis("off")
+
 plt.show()

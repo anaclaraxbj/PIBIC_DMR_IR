@@ -1,0 +1,32 @@
+
+# Dados originais da base DMR-IR: nunca publicar
+/data/raw/
+
+# Dados derivados: manter localmente por padrão
+/data/processed/*
+!/data/processed/.gitkeep
+
+# Pesos e checkpoints: manter localmente por padrão
+/models/*
+!/models/.gitkeep
+
+# Resultados e arquivos gerados: manter localmente por padrão
+/results/*
+!/results/.gitkeep
+
+# Arquivos de modelos de machine learning
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Ambiente Python e arquivos temporários
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Configurações e segredos locais
+.env
+.vscode/
