@@ -1,7 +1,3 @@
-Aqui está uma versão refinada e formatada do seu texto, ideal para ser inserida diretamente no seu Notion ou GitHub (`.md`). Ajustei pontualmente a coesão de algumas frases, corrigi os números "0" que estavam no texto original (assumindo que se referiam a "20 termografias") e apliquei recursos visuais do Markdown para facilitar a leitura.
-
----
-
 # Estrutura da Base de Dados DMR-IR
 
 ## 1. Organização dos Diretórios
