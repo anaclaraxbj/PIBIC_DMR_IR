@@ -5,21 +5,17 @@
 Minha base está organizada assim:
 
 DMR-IR/
-│
 ├── 12 Novos Casos de Testes/
 └── Desenvolvimento da Metodologia/
-    │
-    ├── Doentes/
-    │   ├── Matrizes/
-    │   │   ├── matrizes de temperatura
-    │   │   └── …
-    │   ├── Segmentadas/
-    │   ├── …
-    │   └── png da mama/
-    │
-    └── Saudáveis/
-        │
-        └── …
+    ├── Doentes/
+    │   ├── Matrizes/
+    │   │   └── (matrizes de temperatura em .txt)
+    │   ├── Segmentadas/
+    │   │   └── (arquivos de demarcação .png)
+    │   └── Png da mama/
+    │
+    └── Saudáveis/
+        └── (mesma estrutura interna)
 
 Essa organização tem uma separação entre:
 
