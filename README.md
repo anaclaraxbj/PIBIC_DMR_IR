@@ -17,13 +17,9 @@ O projeto investiga modelos de aprendizado profundo, com foco em **Vision Transf
 ## Tecnologias e ferramentas
 
 - **Linguagem:** Python
-- **Aprendizado profundo:** PyTorch e Torchvision
-- **Manipulação de dados:** NumPy e Pandas
-- **Visualização:** Matplotlib
+- **Aprendizado profundo:** PyTorch
 - **Experimentação:** Jupyter Notebook
 - **Ambiente de desenvolvimento:** Visual Studio Code e Git
-
-As ferramentas serão utilizadas conforme as necessidades de cada etapa da pesquisa.
 
 ## Base de dados
 
@@ -50,25 +46,17 @@ PIBIC_DMR_IR/
 ├── notebooks/          # Exploração dos dados e experimentos
 ```
 
-Os diretórios `raw/`, `processed/`, `models/` e `results/` podem conter arquivos locais que não são versionados no Git. O repositório prioriza o código-fonte, a documentação e os materiais de estudo.
-
 ## Etapas da pesquisa
 
-1. **Fundamentação teórica:** estudo de aprendizado profundo, Vision Transformers e Inteligência Artificial Explicável.
-2. **Preparação dos dados:** organização, normalização e redimensionamento das imagens termográficas.
-3. **Desenvolvimento dos modelos:** implementação e treinamento de modelos de classificação baseados em ViTs, considerando CNNs como referência de comparação.
-4. **Fusão multiangular:** investigação da integração de informações provenientes de diferentes perspectivas das imagens.
-5. **Explicabilidade:** geração e análise de mapas de calor com técnicas como Grad-CAM e mapas de atenção.
-6. **Avaliação:** análise do desempenho dos modelos por métricas como acurácia, sensibilidade, especificidade, F1-score e AUC-ROC, além da avaliação visual das explicações.
-7. **Produção e divulgação científica:** elaboração de relatório técnico, apresentação de resultados e produção de materiais de divulgação científica.
-
-As etapas representam o planejamento da pesquisa; sua execução e seus resultados serão documentados à medida que o trabalho avançar.
+1. **Revisão da literatura e estudo sobre ViT e XAI:** Etapa inicial focada no estudo e fundamentação teórica para o desenvolvimento das atividades do projeto.
+2. **Preparação dos dados:** Organização e pré-processamento rigoroso das imagens da base de dados pública DMR-IR, envolvendo a normalização térmica e o redimensionamento dos arquivos para garantir a padronização necessária à entrada dos algoritmos de aprendizado profundo.
+3. **Desenvolvimento dos modelos:** Implementação e treinamento das arquiteturas de Vision Transformers (ViT), focando no ajuste dos mecanismos de atenção para a classificação precisa das patologias mamárias.
+4. **Implementação de Explicabilidade (XAI):** Aplicação de ferramentas de Inteligência Artificial Explicável (XAI), como o Grad-CAM, gerando mapas de calor que permitam a validação visual das decisões tomadas pelo modelo.
+5. **Validação de Resultados:** Coleta e análise de métricas estatísticas de desempenho computacional e validação das predições.
+6. **Disseminação e Divulgação:** Colaboração na redação de relatórios técnicos e na elaboração de artigos científicos para eventos da área, além da produção de um PITCH em vídeo para o público leigo e criação de conteúdos educativos para redes sociais.
+7. **Integração de Equipe:** Integração plena à equipe multidisciplinar do grupo de pesquisa GPEND4.0.
 
 ## Status atual
 
 **Em desenvolvimento — fase preparatória.**
-
-As atividades iniciais incluem o estudo dos fundamentos de redes neurais e PyTorch, a configuração do ambiente de desenvolvimento, a organização da estrutura do projeto e a obtenção da base DMR-IR.
-
-O pré-processamento completo dos dados, o treinamento e a avaliação dos modelos e a implementação das técnicas de XAI permanecem como etapas a serem desenvolvidas e documentadas.
 
