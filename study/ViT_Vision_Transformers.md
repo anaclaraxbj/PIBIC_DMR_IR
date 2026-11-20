@@ -93,6 +93,17 @@ Esse token funciona como uma representação que pode agregar informações da i
 Ao final, sua representação é utilizada pela cabeça de classificação.
 Exemplo: imagem RGB de 224 × 224, patches de 16 × 16 e dimensão de embedding D = 768.
 
+| Etapa | Operação                   | Resultado                             |
+| :---- | :------------------------- | :------------------------------------ |
+| 1     | Imagem de entrada          | 224 × 224 × 3                         |
+| 2     | Divisão em patches         | 196 patches                           |
+| 3     | Flattening                 | 196 vetores de 768 valores            |
+| 4     | Patch Embedding            | 196 embeddings de dimensão 768        |
+| 5     | Adição de CLS Token        | 197 tokens                            |
+| 6     | Positional Embedding       | 197 vetores com informação posicional |
+| 7     | Transformer Encoder        | 197 representações contextualizadas   |
+| 8     | Classification Head        | Logits das classes                    |
+| 9     | Softmax (quando utilizado) | Probabilidades das classes            |
 ---
 
 # IV — Referências
