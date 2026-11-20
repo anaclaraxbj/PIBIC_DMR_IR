@@ -1,4 +1,4 @@
-# Fundamentação Teórica e Revisão de Trabalhos Acadêmicos
+# Introduction to Vision Transformer (ViT)
 
 Objetivo de estudo: compreender os conceitos de patches, embeddings, positional embeddings e a estrutura geral de um Vision Transformer.
 
