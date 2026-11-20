@@ -61,7 +61,7 @@ Podemos organizar o fluxo de um ViT em três grandes etapas:
 ### 3.1. Embedding
 
 O objetivo dessa etapa é transformar a imagem em uma sequência de vetores que possa ser processada pelo Transformer.
--
+---
 A) Patchification — divisão da imagem em patches
 Diferentemente de um Transformer de texto, que recebe palavras ou partes de palavras, o ViT divide a imagem em pequenas regiões chamadas patches.
 Exemplo:
@@ -71,19 +71,19 @@ Considere uma imagem RGB de 224 × 224 pixels e patches de 16 × 16 pixels.
 - Tamanho de cada patch: 16 × 16 pixels.
 - Quantidade de patches: 14 × 14 = 196.
 Portanto, uma imagem é transformada em uma sequência de 196 patches.
--
+
 B) Flattening — transformação em vetores
 Cada patch é convertido em um vetor unidimensional (flattening).
 Considerando uma imagem RGB, cada patch possui:
 16 × 16 × 3 = 768 valores.
 Assim, cada patch passa a ser representado por um vetor de 768 elementos.
--
+
 C) Patch Embedding — projeção linear
 Os vetores resultantes do flattening são transformados por uma camada de projeção linear.
 Essa operação converte cada patch em um vetor de dimensão D, chamada de dimensão do embedding.
 Por exemplo, se D = 768, cada patch será representado por um vetor de 768 dimensões.
 Atenção: o vetor resultante é uma representação aprendida do patch, e não simplesmente a lista original de pixels.
--
+
 D) Positional Embedding — informação posicional
 Um problema dos Transformers é que o mecanismo de atenção, por si só, não identifica a posição original de cada token na sequência.
 Por isso, o ViT adiciona informações posicionais aos embeddings dos patches.
@@ -91,7 +91,7 @@ Em geral, os embeddings posicionais são somados elemento a elemento aos embeddi
 Representação final = Patch Embedding + Positional Embedding
 Essa operação permite que o modelo tenha acesso à informação sobre a posição de cada patch na imagem.
 Não se trata de somar vetores para calcular a distância entre palavras ou de interpretar diretamente o ângulo entre eles. A soma incorpora informação posicional à representação que será processada pela rede.
--
+
 E) CLS Token — token de classificação
 Na arquitetura ViT original, um token especial chamado [CLS] é adicionado à sequência de patches.
 Esse token funciona como uma representação que pode agregar informações da imagem durante o processamento pelo Transformer.
