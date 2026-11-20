@@ -114,7 +114,7 @@ Exemplo: imagem RGB de 224 × 224, patches de 16 × 16 e dimensão de embedding 
     
 2. **Vizuara.** *Introduction to Vision Transformer(ViT)| AN image is wotth 16x16 words | Computer Vision Serires* 
     
-    [[https://repositorio.ufu.br/handle/123456789/39556](https://youtu.be/aIi5FsdURUA?si=8nKDYJe6Pbj7EMfv)]
+    [https://youtu.be/aIi5FsdURUA?si=ML6GldHDxfGigGlF](https://youtu.be/aIi5FsdURUA?si=8nKDYJe6Pbj7EMfv)]
     
 3. **James Briggs.** *Vision Transformers (ViT) Explained + Fine-tuning in Python*.
     [https://youtu.be/qU7wO02urYU?si=9fB6SMhDn7g15H9A](https://youtu.be/qU7wO02urYU?si=9fB6SMhDn7g15H9A)
