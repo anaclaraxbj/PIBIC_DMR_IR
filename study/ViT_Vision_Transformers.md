@@ -5,25 +5,25 @@ Objetivo de estudo: compreender os conceitos de patches, embeddings, positional 
 
 ---
 
-# I — Revisão de CNNs
+## I — Revisão de CNNs
 As Convolutional Neural Networks (CNNs) são arquiteturas de redes neurais desenvolvidas para processar dados com estrutura espacial, especialmente imagens.
 Uma CNN utiliza filtros (kernels) que percorrem a imagem e identificam padrões locais, como bordas, texturas e formas. Esses filtros possuem pesos aprendidos durante o treinamento.
 
 
-## 1.1. Receptive Fields
+### 1.1. Receptive Fields
 O campo receptivo corresponde à região da entrada que influencia a ativação de determinado neurônio ou característica de uma camada.
 - Nas primeiras camadas, os campos receptivos geralmente são menores, permitindo identificar características locais.
 - Nas camadas mais profundas, os campos receptivos tendem a aumentar, permitindo combinar informações de regiões maiores da imagem.
 Exemplo: uma rede pode identificar inicialmente bordas e texturas e, em camadas posteriores, combinar essas informações para reconhecer estruturas mais complexas.
 
 
-## 1.2. ResNet-101
+### 1.2. ResNet-101
 A ResNet-101 é uma arquitetura de CNN com 101 camadas, baseada em conexões residuais (skip connections).
 Essas conexões permitem que informações atravessem determinados blocos da rede por caminhos alternativos, facilitando o treinamento de redes profundas.
 .
 
 
-## 1.3. Limitações e motivação para Transformers
+### 1.3. Limitações e motivação para Transformers
 As CNNs possuem um forte viés indutivo para padrões locais: suas convoluções exploram regiões próximas e compartilham os mesmos filtros espacialmente.
 Isso é uma vantagem para aprender características visuais com eficiência, mas a interação entre regiões distantes da imagem depende da combinação de várias camadas ou de mecanismos adicionais.
 Os Transformers oferecem outra abordagem: o mecanismo de self-attention permite relacionar diferentes regiões da imagem diretamente.
@@ -31,7 +31,7 @@ Os Transformers oferecem outra abordagem: o mecanismo de self-attention permite 
 
 ---
 
-# II — Introdução aos Transformers
+## II — Introdução aos Transformers
 
 
 Transformers são arquiteturas de redes neurais baseadas principalmente no mecanismo de atenção (attention mechanism).
@@ -59,8 +59,7 @@ Podemos organizar o fluxo de um ViT em três grandes etapas:
 
 
 ### 3.1. Embedding
-
-O objetivo dessa etapa é transformar a imagem em uma sequência de vetores que possa ser processada pelo Transformer.
+#### O objetivo dessa etapa é transformar a imagem em uma sequência de vetores que possa ser processada pelo Transformer.
 ---
 A) Patchification — divisão da imagem em patches
 Diferentemente de um Transformer de texto, que recebe palavras ou partes de palavras, o ViT divide a imagem em pequenas regiões chamadas patches.
@@ -111,7 +110,40 @@ Exemplo: imagem RGB de 224 × 224, patches de 16 × 16 e dimensão de embedding 
 | 9     | Softmax (quando utilizado) | Probabilidades das classes            |
 ---
 
-# IV — Referências
+## IV — CNN × Vision Transformer
+CNN: Convolução e extração hierárquica de características locais.
+ViT: Patches, embeddings e relações globais por autoatenção.
+
+| Critério                        | CNN (Rede Neural Convolucional)                                                                         | ViT (Vision Transformer)                                                                                                             |
+| :------------------------------ | :------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------- |
+| Princípio de funcionamento      | Aplica filtros convolucionais sobre regiões locais da imagem para extrair características.              | Divide a imagem em patches, transforma-os em tokens e calcula relações entre eles por autoatenção.                                   |
+| Integração de informações       | Constrói o contexto progressivamente por meio de camadas convolucionais e operações de agregação.       | Permite interações diretas entre tokens distantes em cada bloco de autoatenção padrão.                                               |
+| Vantagens                       | Possui vieses indutivos úteis para imagens, compartilhamento de pesos e eficiência em muitos cenários.  | Permite integração global flexível e aprendizado de diferentes relações entre regiões da imagem.                                     |
+| Limitações                      | A identificação de relações globais pode exigir maior profundidade e ampliação do campo receptivo.      | Apresenta custo quadrático de atenção em relação ao número de tokens e pode depender mais de pré-treinamento e dados adequados.      |
+| Aplicação à termografia mamária | Pode aprender padrões térmicos locais e combiná-los progressivamente em características mais complexas. | Pode aprender relações entre regiões espacialmente distantes, potencialmente úteis para estudar assimetrias térmicas entre as mamas. |Principal diferença: a CNN prioriza a extração hierárquica de características locais por convoluções, enquanto o ViT utiliza autoatenção para contextualizar os patches considerando informações de outros patches da imagem.
+
+### Mas há um problema:
+O DMR-IR apresenta uma quantidade limitada de pacientes independentes, o que pode dificultar o treinamento e a generalização de modelos de Vision Transformer.
+A utilização de modelos ViT pré-treinados, associada a estratégias de transfer learning, Data Augmentation e regularização, pode tornar sua aplicação mais viável em conjuntos de dados termográficos pequenos.
+Então podemos: Comparar o desempenho de uma CNN e de um ViT sob condições experimentais equivalentes, considerando diferentes estratégias de treinamento e avaliando a capacidade de generalização por paciente.
+
+### Questões: 
+1. O que é autoatenção e qual problema ela resolve? Autoatenção é um mecanismo computacional que permite que cada token atribua diferentes pesos às informações provenientes dos demais tokens da sequência, produzindo uma representação contextualizada. Dessa forma, o modelo consegue aprender relações entre diferentes partes da imagem.
+2. Qual é a diferença entre Query, Key e Value? 
+- Query (Q): representa o que um token procura nas demais representações.
+- Key (K): representa as características utilizadas para calcular a compatibilidade com a Query.
+- Value (V): contém as informações que serão combinadas para produzir a representação de saída.
+1. Por que precisamos calcular \(QK^T\)? Para gerar a pontuação de compatibilidade
+2. Qual é a função da Softmax? As pontuações de compatibilidade devem ser transformadas em pesos após a normalização e a função de Softmax realiza isso.
+3. Por que multiplicamos os pesos de atenção por V? Para gerar o resultado final, produzindo uma combinação ponderada das informações dos tokens, gerando uma nova representação contextualizada.
+4. O que significa Multi-Head Self-Attention? É a execução paralela de múltiplos mecanismos de autoatenção, cada um capaz de aprender diferentes padrões de relacionamento entre os tokens.
+5. Por que a autoatenção permite relacionar patches distantes? Por que ele relaciona além da própria informação do patch, relaciona todos os outros patches da imagem, isso acontece porque na autoatenção cada token pode calcular sua compatibilidade com todos os tokens da sequência.
+6. Por que isso não significa que o ViT seja sempre melhor do que uma CNN? O ViT não é necessariamente superior porque CNNs possuem vieses indutivos que favorecem o aprendizado de características locais e podem torná-las mais eficientes em conjuntos de dados menores. Já o ViT pode depender mais de pré-treinamento e de estratégias adequadas de treinamento, especialmente quando há poucos dados disponíveis.
+7. Por que os mapas de atenção não são automaticamente explicações confiáveis? Os mapas de atenção não são automaticamente explicações confiáveis porque os pesos de atenção não representam necessariamente a importância causal das regiões para a decisão do modelo. Uma região destacada pode não ter relevância fisiológica ou clínica. Por isso, é necessário avaliar a fidelidade e a estabilidade das explicações e investigar sua correspondência com informações clínicas independentes.
+
+
+
+# VI — Referências
 
 1. **Dive into Deep Learning.** Capítulo sobre Vision Transformer.
     
@@ -123,4 +155,10 @@ Exemplo: imagem RGB de 224 × 224, patches de 16 × 16 e dimensão de embedding 
     
 3. **James Briggs.** *Vision Transformers (ViT) Explained + Fine-tuning in Python*.
     [https://youtu.be/qU7wO02urYU?si=9fB6SMhDn7g15H9A](https://youtu.be/qU7wO02urYU?si=9fB6SMhDn7g15H9A)
+
+4. Vaswani et al. (2017). Attention Is All You Need. NeurIPS. Trabalho original que apresenta a arquitetura Transformer e a atenção por produto escalar. DOI: 10.48550/arXiv.1706.03762.
+   
+5. Dosovitskiy et al. (2021). An Image Is Worth 16×16 Words: Transformers for Image Recognition at Scale. ICLR. Referência fundamental para entender como o Transformer foi adaptado à classificação de imagens.
+arXiv+1
+
     
