@@ -67,7 +67,7 @@ Focado no equilíbrio térmico basal do paciente, captura **5 incidências angul
 
 ### Protocolo Dinâmico (Dynamic Protocol - DIT)
 
-Focado na análise transiente, monitora a recuperação térmica da pele após um estresse físico provocado por resfriamento local (ventilação dirigida). O subset utilizado para a presente pesquisa opera **exclusivamente sob o protocolo dinâmico**, cujas características são:
+Focado na análise transiente, monitora a recuperação térmica da pele após um estresse físico provocado por resfriamento local (ventilação dirigida). O subset utilizado para a presente pesquisa opera **principalmente sob o protocolo dinâmico**, o notebook também encontrou arquivos com identificadores ESTATICO dentro de Desenvolvimento da Metodologia, cujas características são:
 
 * **Sequência Frontal:** 20 imagens termográficas sequenciais capturadas na vista frontal durante a fase de recuperação de temperatura.
 * **Volume de Dados:** Utilizando 64 pacientes no conjunto de aprendizado com 20 termogramas cada, totaliza-se **1.280 imagens sequenciais**.
