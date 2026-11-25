@@ -156,9 +156,6 @@ Então podemos: Comparar o desempenho de uma CNN e de um ViT sob condições exp
 3. **James Briggs.** *Vision Transformers (ViT) Explained + Fine-tuning in Python*.
     [https://youtu.be/qU7wO02urYU?si=9fB6SMhDn7g15H9A](https://youtu.be/qU7wO02urYU?si=9fB6SMhDn7g15H9A)
 
-4. Vaswani et al. (2017). Attention Is All You Need. NeurIPS. Trabalho original que apresenta a arquitetura Transformer e a atenção por produto escalar. DOI: 10.48550/arXiv.1706.03762.
+4. Vaswani et al. (2017). Attention Is All You Need. NeurIPS.  DOI: 10.48550/arXiv.1706.03762.
    
-5. Dosovitskiy et al. (2021). An Image Is Worth 16×16 Words: Transformers for Image Recognition at Scale. ICLR. Referência fundamental para entender como o Transformer foi adaptado à classificação de imagens.
-arXiv+1
-
-    
+5. Dosovitskiy et al. (2021). An Image Is Worth 16×16 Words: Transformers for Image Recognition at Scale. ICLR. DOI: https://doi.org/10.48550/arXiv.2010.11929
