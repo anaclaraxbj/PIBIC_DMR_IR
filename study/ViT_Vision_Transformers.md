@@ -143,7 +143,7 @@ Então podemos: Comparar o desempenho de uma CNN e de um ViT sob condições exp
 
 
 
-# VI — Referências
+# V — Referências
 
 1. **Dive into Deep Learning.** Capítulo sobre Vision Transformer.
     
