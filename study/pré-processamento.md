@@ -76,6 +76,7 @@ Foram definidas quatro resoluções candidatas, preservando a proporção origin
 - 256 × 192 pixels;
 - 224 × 168 pixels;
 - 160 × 120 pixels.
+  
 A escolha definitiva dependerá da avaliação da preservação das informações térmicas e espaciais, do custo computacional e da compatibilidade com a arquitetura Vision Transformer selecionada.
 A normalização Min-Max com limites comuns e a combinação de interpolação bilinear para a matriz térmica e vizinho mais próximo para a máscara foram estabelecidas como escolhas provisórias.
 As dimensões candidatas foram definidas para experimentação, sem seleção definitiva.
